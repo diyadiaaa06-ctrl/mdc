@@ -1,0 +1,60 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diya S – Personal Website</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="header-inner">
+      <div>
+        <h1>Diya S</h1>
+        <p class="tagline">Integrated MBA Student • Explorer</p>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="home.html" class="nav-link active">Home</a></li>
+          <li><a href="hobbies.html" class="nav-link">Hobbies</a></li>
+          <li><a href="qualifications.html" class="nav-link">Qualifications</a></li>
+          <li><a href="activities.html" class="nav-link">Extra-Curricular</a></li>
+          <li><a href="family.html" class="nav-link">Family & Home</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== CONTENT ===== -->
+  <main id="content"></main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>© 2025 Diya S | Crafted with ❤️ using HTML, CSS & JavaScript</p>
+  </footer>
+
+  <script>
+    const content = document.getElementById('content');
+    const links = document.querySelectorAll('.nav-link');
+
+    function loadPage(url){
+      fetch(url).then(r=>r.text()).then(t=>content.innerHTML = t);
+    }
+    loadPage('pages/home.html'); // default page
+
+    links.forEach(link=>{
+      link.addEventListener('click', e=>{
+        e.preventDefault();
+        links.forEach(l=>l.classList.remove('active'));
+        link.classList.add('active');
+        loadPage(link.getAttribute('href'));
+      });
+    });
+  </script>
+</body>
+</html>
